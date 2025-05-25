@@ -1,3 +1,4 @@
+DR$ = "VBESVGA.DRV"
 OPEN "VIDMODES.TXT" FOR INPUT AS #1
 OPEN "OEMSETUP.1" FOR OUTPUT AS #2
 PRINT #2, "Version="; CHR$(34); "0.0.1"; CHR$(34)
@@ -36,19 +37,20 @@ CO$ = "64k"
 CASE 24
 CO$ = "16M"
 END SELECT
-PRINT #2, "VBE"; ID$; "S=1:VBESVGA.DRV,"; CHR$(34); "SVGA ("; LTRIM$(STR$(HO#)); "x"; LTRIM$(STR$(VE#)); "x"; CO$; " Small fonts)"; CHR$(34); ","; CHR$(34); "100,96,96"; CHR$(34); ",,2:VGALOGO.LGO, 2:VDDVBE.386, 2:VGADIB.3GR,,2:VGALOGO.RLE,VBE"; ID$; "S"
-PRINT #2, "VBE"; ID$; "L=1:VBESVGA.DRV,"; CHR$(34); "SVGA ("; LTRIM$(STR$(HO#)); "x"; LTRIM$(STR$(VE#)); "x"; CO$; " Large fonts)"; CHR$(34); ","; CHR$(34); "100,120,120"; CHR$(34); ",,2:VGALOGO.LGO, 2:VDDVBE.386, 2:VGADIB.3GR,,2:VGALOGO.RLE,VBE"; ID$; "L"
-FOR J = 1 TO 2
-IF J = 1 THEN PRINT #3, CHR$(91); "VBE"; ID$; "S"; CHR$(93) ELSE PRINT #3, CHR$(91); "VBE"; ID$; "L"; CHR$(93)
-PRINT #3, ",,system.ini,VBESVGA.DRV,"; CHR$(34); "W"; CHR$(34); ","; CHR$(34); "Width="; LTRIM$(STR$(HO#)); CHR$(34)
-PRINT #3, ",,system.ini,VBESVGA.DRV,"; CHR$(34); "H"; CHR$(34); ","; CHR$(34); "Height="; LTRIM$(STR$(VE#)); CHR$(34)
-IF CO# <> 24 THEN PRINT #3, ",,system.ini,VBESVGA.DRV,"; CHR$(34); "D"; CHR$(34); ","; CHR$(34); "Depth="; LTRIM$(STR$(CO#)); CHR$(34)
-IF J = 2 THEN PRINT #3, ",,system.ini,VBESVGA.DRV,"; CHR$(34); "F"; CHR$(34); ","; CHR$(34); "fontsize=large"; CHR$(34)
+PRINT #2, "VBE"; ID$; "S=1:"; DR$; ","; CHR$(34); "VBE/SVGA "; LTRIM$(STR$(HO#)); "x"; LTRIM$(STR$(VE#)); "x"; CO$; " Small fonts"; CHR$(34); ","; CHR$(34); "100,96,96"; CHR$(34); ",,2:VGALOGO.LGO, 2:VDDVBE.386, 2:VGADIB.3GR,,2:VGALOGO.RLE,VBE"; ID$; "S"
+PRINT #2, "VBE"; ID$; "L=1:"; DR$; ","; CHR$(34); "VBE/SVGA "; LTRIM$(STR$(HO#)); "x"; LTRIM$(STR$(VE#)); "x"; CO$; " Large fonts"; CHR$(34); ","; CHR$(34); "100,120,120"; CHR$(34); ",,2:VGALOGO.LGO, 2:VDDVBE.386, 2:VGADIB.3GR,,2:VGALOGO.RLE,VBE"; ID$; "L"
+FOR K = 1 TO 2
+IF K = 1 THEN PRINT #3, CHR$(91); "VBE"; ID$; "S"; CHR$(93) ELSE PRINT #3, CHR$(91); "VBE"; ID$; "L"; CHR$(93)
+PRINT #3, ",,system.ini,"; DR$; ","; CHR$(34); "W"; CHR$(34); ","; CHR$(34); "Width="; LTRIM$(STR$(HO#)); CHR$(34)
+PRINT #3, ",,system.ini,"; DR$; ","; CHR$(34); "H"; CHR$(34); ","; CHR$(34); "Height="; LTRIM$(STR$(VE#)); CHR$(34)
+PRINT #3, ",,system.ini,"; DR$; ","; CHR$(34); "D"; CHR$(34); ","; CHR$(34); "Depth="; LTRIM$(STR$(CO#)); CHR$(34)
+IF K = 1 THEN PRINT #3, ",,system.ini,"; DR$; ","; CHR$(34); "F"; CHR$(34); ","; CHR$(34); "fontsize=small"; CHR$(34) ELSE PRINT #3, ",,system.ini,"; DR$; ","; CHR$(34); "F"; CHR$(34); ","; CHR$(34); "fontsize=large"; CHR$(34)
 PRINT #3, ""
-NEXT J
+NEXT K
 1009 LOOP
 PRINT #2, ""
 CLOSE #3
 CLOSE #2
 CLOSE #1
 SYSTEM
+
