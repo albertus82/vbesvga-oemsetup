@@ -1,7 +1,7 @@
 DR$ = "VBESVGA.DRV"
 OPEN "VIDMODES.TXT" FOR INPUT AS #1
-OPEN "OEMSETUP.1" FOR OUTPUT AS #2
-OPEN "OEMSETUP.2" FOR OUTPUT AS #3
+OPEN "OEMSETUP.INF" FOR OUTPUT AS #2
+OPEN "OEMSETUP.TMP" FOR OUTPUT AS #3
 REM OEMSETUP.INF header
 PRINT #2, "Version="; CHR$(34); "0.0.1"; CHR$(34)
 PRINT #2, ""
@@ -45,19 +45,26 @@ IF FS$ = "S" THEN PRINT #2, "Small";  ELSE PRINT #2, "Large";
 PRINT #2, " fonts"; CHR$(34); ","; CHR$(34); "100,";
 IF FS$ = "S" THEN PRINT #2, "96,96";  ELSE PRINT #2, "120,120";
 PRINT #2, CHR$(34); ",,2:VGALOGO.LGO, 2:VDDVBE.386, 2:VGADIB.3GR,,2:VGALOGO.RLE,VBE"; ID$; FS$
-REM Settings for each entry
+REM Settings for each entry are temporarily saved to another file
 PRINT #3, "[VBE"; ID$; FS$; "]"
 PRINT #3, ",,system.ini,"; DR$; ","; CHR$(34); "W"; CHR$(34); ","; CHR$(34); "Width="; LTRIM$(STR$(H%)); CHR$(34)
 PRINT #3, ",,system.ini,"; DR$; ","; CHR$(34); "H"; CHR$(34); ","; CHR$(34); "Height="; LTRIM$(STR$(V%)); CHR$(34)
 PRINT #3, ",,system.ini,"; DR$; ","; CHR$(34); "D"; CHR$(34); ","; CHR$(34); "Depth="; LTRIM$(STR$(C%)); CHR$(34)
 PRINT #3, ",,system.ini,"; DR$; ","; CHR$(34); "F"; CHR$(34); ","; CHR$(34); "fontsize=";
 IF FS$ = "S" THEN PRINT #3, "small";  ELSE PRINT #3, "large";
-PRINT #3, CHR$(34)
-PRINT #3, ""
+PRINT #3, CHR$(34): PRINT #3, ""
 NEXT K
 1009 LOOP
+CLOSE #3, #1
 PRINT #2, ""
-CLOSE #3
-CLOSE #2
-CLOSE #1
+REM Compose the final INF file
+OPEN "OEMSETUP.TMP" FOR INPUT AS #1
+DO WHILE NOT EOF(1)
+LINE INPUT #1, B$
+PRINT #2, B$
+LOOP
+CLOSE #2, #1
+KILL "OEMSETUP.TMP"
+KILL "VIDMODES.TXT"
+PRINT
 SYSTEM
