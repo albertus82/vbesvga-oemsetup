@@ -1,6 +1,7 @@
 DR$ = "VBESVGA.DRV"
 OPEN "VIDMODES.TXT" FOR INPUT AS #1
 OPEN "OEMSETUP.1" FOR OUTPUT AS #2
+OPEN "OEMSETUP.2" FOR OUTPUT AS #3
 REM OEMSETUP.INF header
 PRINT #2, "Version="; CHR$(34); "0.0.1"; CHR$(34)
 PRINT #2, ""
@@ -8,7 +9,6 @@ PRINT #2, "[disks]"
 PRINT #2, "    1 =., "; CHR$(34); "PluMGMK VBE SVGA Driver"; CHR$(34); ",disk1"
 PRINT #2, ""
 PRINT #2, "[display]"
-OPEN "OEMSETUP.2" FOR OUTPUT AS #3
 DO
 LINE INPUT #1, A$
 LOOP UNTIL A$ = "Available modes:"
