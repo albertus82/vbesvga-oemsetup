@@ -1,5 +1,6 @@
 DR$ = "VBESVGA.DRV"
-OPEN "VIDMODES.TXT" FOR INPUT AS #1
+SHELL "VIDMODES > VIDMODES.TMP"
+OPEN "VIDMODES.TMP" FOR INPUT AS #1
 OPEN "OEMSETUP.INF" FOR OUTPUT AS #2
 OPEN "OEMSETUP.TMP" FOR OUTPUT AS #3
 REM OEMSETUP.INF header
@@ -9,12 +10,12 @@ PRINT #2, "[disks]"
 PRINT #2, "    1 =., "; CHR$(34); "PluMGMK VBE SVGA Driver"; CHR$(34); ",disk1"
 PRINT #2, ""
 PRINT #2, "[display]"
-DO
+WHILE A$ <> "Available modes:"
 LINE INPUT #1, A$
-LOOP UNTIL A$ = "Available modes:"
+WEND
 REDIM M(255, 2) AS INTEGER: REM Distinct video modes
 I = 0
-DO WHILE NOT EOF(1)
+WHILE NOT EOF(1)
 LINE INPUT #1, A$
 IF LEN(A$) = 0 THEN 1009: REM continue
 ID$ = LEFT$(A$, INSTR(A$, ":") - 1)
@@ -30,14 +31,9 @@ M(I, 0) = H%
 M(I, 1) = V%
 M(I, 2) = C%
 I = I + 1
-SELECT CASE C%
-CASE 8
-C$ = "256"
-CASE 16
-C$ = "64k"
-CASE 24
-C$ = "16M"
-END SELECT
+IF C% = 8 THEN C$ = "256"
+IF C% = 16 THEN C$ = "64k"
+IF C% = 24 THEN C$ = "16M"
 FOR K = 0 TO 1: REM Create both large and small font entries for every video mode
 IF K = 0 THEN FS$ = "S" ELSE FS$ = "L"
 PRINT #2, "VBE"; ID$; FS$; "=1:"; DR$; ","; CHR$(34); "VBE/SVGA "; LTRIM$(STR$(H%)); "x"; LTRIM$(STR$(V%)); "x"; C$; " ";
@@ -54,8 +50,8 @@ PRINT #3, ",,system.ini,"; DR$; ","; CHR$(34); "F"; CHR$(34); ","; CHR$(34); "fo
 IF FS$ = "S" THEN PRINT #3, "small";  ELSE PRINT #3, "large";
 PRINT #3, CHR$(34): PRINT #3, ""
 NEXT K
-1009 LOOP
-CLOSE #3, #1
+1009 WEND
+CLOSE 3, 1
 PRINT #2, ""
 REM Compose the final INF file
 OPEN "OEMSETUP.TMP" FOR INPUT AS #1
@@ -63,8 +59,8 @@ DO WHILE NOT EOF(1)
 LINE INPUT #1, B$
 PRINT #2, B$
 LOOP
-CLOSE #2, #1
+CLOSE 2, 1
 KILL "OEMSETUP.TMP"
-KILL "VIDMODES.TXT"
-PRINT
+KILL "VIDMODES.TMP"
 SYSTEM
+
