@@ -12,14 +12,22 @@ LINE INPUT #1, A$
 LOOP UNTIL A$ = "Available modes:"
 SZ = 255
 DIM MO(SZ, 2) AS INTEGER
-LET I = 0
+I = 0
 DO WHILE NOT EOF(1)
 LINE INPUT #1, A$
 ID$ = LEFT$(A$, INSTR(A$, ":") - 1)
 HO# = VAL(MID$(A$, INSTR(A$, ":") + 2, INSTR(A$, "*") - INSTR(A$, ":") - 2))
 VE# = VAL(MID$(A$, INSTR(A$, "*") + 1, INSTR(INSTR(A$, "*") + 1, A$, "*") - INSTR(A$, "*") - 1))
 CO# = VAL(MID$(A$, INSTR(INSTR(A$, "*") + 1, A$, "*") + 1, 2))
+IF HO# < 640 OR VE# < 480 THEN 1009
 IF (CO# > 24) THEN CO# = 24
+FOR J = 0 TO SZ
+IF MO(J, 0) = HO# AND MO(J, 1) = VE# AND MO(J, 2) = CO# THEN 1009
+NEXT J
+MO(I, 0) = HO#
+MO(I, 1) = VE#
+MO(I, 2) = CO#
+I = I + 1
 SELECT CASE CO#
 CASE 8
 CO$ = "256"
@@ -28,14 +36,6 @@ CO$ = "64k"
 CASE 24
 CO$ = "16M"
 END SELECT
-IF HO# < 640 OR VE# < 480 THEN 999
-FOR J = 0 TO SZ
-IF MO(J, 0) = HO# AND MO(J, 1) = VE# AND MO(J, 2) = CO# THEN 999
-NEXT J
-MO(I, 0) = HO#
-MO(I, 1) = VE#
-MO(I, 2) = CO#
-I = I + 1
 PRINT #2, "VBE"; ID$; "S=1:VBESVGA.DRV,"; CHR$(34); "SVGA ("; LTRIM$(STR$(HO#)); "x"; LTRIM$(STR$(VE#)); "x"; CO$; " Small fonts)"; CHR$(34); ","; CHR$(34); "100,96,96"; CHR$(34); ",,2:VGALOGO.LGO, 2:VDDVBE.386, 2:VGADIB.3GR,,2:VGALOGO.RLE,VBE"; ID$; "S"
 PRINT #2, "VBE"; ID$; "L=1:VBESVGA.DRV,"; CHR$(34); "SVGA ("; LTRIM$(STR$(HO#)); "x"; LTRIM$(STR$(VE#)); "x"; CO$; " Large fonts)"; CHR$(34); ","; CHR$(34); "100,120,120"; CHR$(34); ",,2:VGALOGO.LGO, 2:VDDVBE.386, 2:VGADIB.3GR,,2:VGALOGO.RLE,VBE"; ID$; "L"
 FOR J = 1 TO 2
@@ -46,10 +46,9 @@ IF CO# <> 24 THEN PRINT #3, ",,system.ini,VBESVGA.DRV,"; CHR$(34); "D"; CHR$(34)
 IF J = 2 THEN PRINT #3, ",,system.ini,VBESVGA.DRV,"; CHR$(34); "F"; CHR$(34); ","; CHR$(34); "fontsize=large"; CHR$(34)
 PRINT #3, ""
 NEXT J
-999 LOOP
+1009 LOOP
 PRINT #2, ""
 CLOSE #3
 CLOSE #2
 CLOSE #1
 SYSTEM
-
