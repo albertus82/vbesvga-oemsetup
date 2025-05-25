@@ -7,7 +7,7 @@
 70 PRINT #2, "Version="; CHR$(34); "0.0.1"; CHR$(34)
 80 PRINT #2, ""
 90 PRINT #2, "[disks]"
-100 PRINT #2, "    1 =., "; CHR$(34); "PluMGMK VBE SVGA Driver"; CHR$(34); ",disk1"
+100 PRINT #2, "    1 =., "; CHR$(34); "PluMGMK VBE/SVGA Driver"; CHR$(34); ",disk1"
 110 PRINT #2, ""
 120 PRINT #2, "[display]"
 130 WHILE A$ <> "Available modes:"
