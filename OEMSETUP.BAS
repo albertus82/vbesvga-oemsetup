@@ -18,7 +18,7 @@
 180 IF WI% < 640 OR HE% < 480 THEN 270: REM Ignore useless resolutions
 190 IF DE% > 24 THEN DE% = 24: REM Max value allowed for Depth is 24
 200 FOR J = 0 TO I
-210 IF MO(J, 0) = WI% AND MO(J, 1) = HE% AND MO(J, 2) = DE% THEN 270: REM continue (avoid duplicates)
+210 IF MO(J, 0) = WI% AND MO(J, 1) = HE% AND MO(J, 2) = DE% THEN 270: REM Avoid duplicates
 220 NEXT J
 230 MO(I, 0) = WI%
 240 MO(I, 1) = HE%
