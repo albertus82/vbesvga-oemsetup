@@ -11,7 +11,7 @@
 110 I = 0
 120 WHILE NOT EOF(1)
 130 LINE INPUT #1, A$
-140 IF LEN(A$) = 0 THEN 270: REM continue
+140 IF LEN(A$) = 0 THEN 270: REM Skip empty lines
 150 WI% = VAL(MID$(A$, INSTR(A$, ":") + 2, INSTR(A$, "*") - INSTR(A$, ":") - 2))
 160 HE% = VAL(MID$(A$, INSTR(A$, "*") + 1, INSTR(INSTR(A$, "*") + 1, A$, "*") - INSTR(A$, "*") - 1))
 170 DE% = VAL(MID$(A$, INSTR(INSTR(A$, "*") + 1, A$, "*") + 1, INSTR(INSTR(A$, " ") + 1, A$, " ") - INSTR(INSTR(A$, "*") + 1, A$, "*") - 1))
