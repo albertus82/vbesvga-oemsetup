@@ -1,10 +1,10 @@
 10 DR$ = "VBESVGA.DRV"
+15 DIM MO(255, 2): REM Distinct video modes (width, height, depth)
 20 SHELL "VIDMODES > VIDMODES.TMP"
 30 OPEN "VIDMODES.TMP" FOR INPUT AS #1
 130 WHILE A$ <> "Available modes:"
 140 LINE INPUT #1, A$
 150 WEND
-160 DIM MO(255, 2): REM Distinct video modes (width, height, depth)
 170 I = 0
 180 WHILE NOT EOF(1)
 190 LINE INPUT #1, A$
@@ -15,7 +15,7 @@
 270 IF WI% < 640 OR HE% < 480 THEN 361: REM continue
 280 IF DE% > 24 THEN DE% = 24: REM Max value allowed for Depth is 24
 300 FOR J = 0 TO I
-310 IF MO(J, 0) = WI% AND MO(J, 1) = HE% AND MO(J, 2) = DE% THEN 361: REM continue
+310 IF MO(J, 0) = WI% AND MO(J, 1) = HE% AND MO(J, 2) = DE% THEN 361: REM continue (avoid duplicates)
 320 NEXT J
 330 MO(I, 0) = WI%
 340 MO(I, 1) = HE%
@@ -35,7 +35,7 @@
 372 PRINT #2, "[display]"
 374 REM Entries
 375 FOR J = 0 TO I: REM Cycle over all valid modes
-383 FOR K = 0 TO 1: REM Create both large and small font entries for every video mode
+383 FOR K = 0 TO 1: REM Create both large and small font entries for every mode
 388 IF K = 0 THEN FS$ = "S" ELSE FS$ = "L"
 389 ID$ = "VBE"; RIGHT$(STR$(I), LEN(STR$(I))); FS$
 390 PRINT #2, ID$; "=1:"; DR$; ","; CHR$(34); "VBE/SVGA "; RIGHT$(STR$(MO(J, 0)), LEN(STR$(MO(J, 0)))); "x"; RIGHT$(STR$(MO(J, 1)), LEN(STR$(MO(J, 1)))); "x";
@@ -50,8 +50,8 @@
 560 NEXT K
 570 NEXT J
 571 REM Settings
-572 FOR J = 0 TO I: REM Cycle again over all valid modes
-578 FOR K = 0 TO 1: REM Create both large and small font entries for every video mode
+572 FOR J = 0 TO I: REM Cycle AGAIN over all valid modes
+578 FOR K = 0 TO 1: REM Create both large and small font entries for every mode
 581 IF K = 0 THEN FS$ = "S" ELSE FS$ = "L"
 583 PRINT #2, "[VBE"; RIGHT$(STR$(I), LEN(STR$(I))); FS$; "]"
 585 PRINT #2, ",,system.ini,"; DR$; ","; CHR$(34); "W"; CHR$(34); ","; CHR$(34); "Width="; RIGHT$(STR$(MO(J, 0)), LEN(STR$(MO(J, 0)))); CHR$(34)
