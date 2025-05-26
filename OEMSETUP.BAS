@@ -38,29 +38,29 @@
 380 REM Entries
 390 FOR J = 0 TO I: REM Cycle over all valid modes
 400 FOR K = 0 TO 1: REM Create both large and small font entries for every mode
-410 IF K = 0 THEN FS$ = "S" ELSE FS$ = "L"
-420 PRINT #2, "VBE"; FS$; RIGHT$(STR$(J), LEN(STR$(J)) - 1); "=1:VBESVGA.DRV,"; CHR$(34); "VBE SVGA "; RIGHT$(STR$(MO(J, 0)), LEN(STR$(MO(J, 0))) - 1); "x"; RIGHT$(STR$(MO(J, 1)), LEN(STR$(MO(J, 1))) - 1); "x";
+410 IF K = 0 THEN FS$ = "s" ELSE FS$ = "l"
+420 PRINT #2, "vbe"; RIGHT$(STR$(J), LEN(STR$(J)) - 1); FS$; "f=1:vbesvga.drv,"; CHR$(34); "VBE SVGA "; RIGHT$(STR$(MO(J, 0)), LEN(STR$(MO(J, 0))) - 1); "x"; RIGHT$(STR$(MO(J, 1)), LEN(STR$(MO(J, 1))) - 1); "x";
 430 IF MO(J, 2) = 8 THEN PRINT #2, "256";
 440 IF MO(J, 2) = 16 THEN PRINT #2, "64k";
 450 IF MO(J, 2) = 24 THEN PRINT #2, "16M";
 460 PRINT #2, " ";
-470 IF FS$ = "S" THEN PRINT #2, "Small";  ELSE PRINT #2, "Large";
+470 IF FS$ = "s" THEN PRINT #2, "Small";  ELSE PRINT #2, "Large";
 480 PRINT #2, " fonts"; CHR$(34); ","; CHR$(34); "100,";
-490 IF FS$ = "S" THEN PRINT #2, "96,96";  ELSE PRINT #2, "120,120";
-500 PRINT #2, CHR$(34); ",,2:VGALOGO.LGO,1:VDDVBE.386,2:VGADIB.3GR,,2:VGALOGO.RLE,VBE"; RIGHT$(STR$(J), LEN(STR$(J)) - 1); FS$
+490 IF FS$ = "s" THEN PRINT #2, "96,96";  ELSE PRINT #2, "120,120";
+500 PRINT #2, CHR$(34); ",2:vgacolor.2gr,2:vgalogo.lgo,1:vddvbe.386,2:vgadib.3gr,,2:vgalogo.rle,vbe"; RIGHT$(STR$(J), LEN(STR$(J)) - 1); FS$
 510 NEXT K
 520 NEXT J
 530 REM Settings
 540 FOR J = 0 TO I: REM Cycle AGAIN over all valid modes
 550 FOR K = 0 TO 1: REM Create both large and small font entries for every mode
-560 IF K = 0 THEN FS$ = "S" ELSE FS$ = "L"
+560 IF K = 0 THEN FS$ = "s" ELSE FS$ = "l"
 570 PRINT #2, ""
-580 PRINT #2, "[VBE"; RIGHT$(STR$(J), LEN(STR$(J)) - 1); FS$; "]"
+580 PRINT #2, "[vbe"; RIGHT$(STR$(J), LEN(STR$(J)) - 1); FS$; "]"
 590 PRINT #2, ",,system.ini,"; SN$; ","; CHR$(34); "Width="; CHR$(34); ","; CHR$(34); "Width="; RIGHT$(STR$(MO(J, 0)), LEN(STR$(MO(J, 0))) - 1); CHR$(34)
 600 PRINT #2, ",,system.ini,"; SN$; ","; CHR$(34); "Height="; CHR$(34); ","; CHR$(34); "Height="; RIGHT$(STR$(MO(J, 1)), LEN(STR$(MO(J, 1))) - 1); CHR$(34)
 610 PRINT #2, ",,system.ini,"; SN$; ","; CHR$(34); "Depth="; CHR$(34); ","; CHR$(34); "Depth="; RIGHT$(STR$(MO(J, 2)), LEN(STR$(MO(J, 2))) - 1); CHR$(34)
 620 PRINT #2, ",,system.ini,"; SN$; ","; CHR$(34); "fontsize="; CHR$(34); ","; CHR$(34); "fontsize=";
-630 IF FS$ = "S" THEN PRINT #2, "small";  ELSE PRINT #2, "large";
+630 IF FS$ = "s" THEN PRINT #2, "small";  ELSE PRINT #2, "large";
 640 PRINT #2, CHR$(34)
 650 NEXT K
 660 NEXT J
