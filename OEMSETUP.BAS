@@ -61,7 +61,8 @@
 620 PRINT #2, ",,system.ini,"; SN$; ","; CHR$(34); "Depth="; CHR$(34); ","; CHR$(34); "Depth="; RIGHT$(STR$(MO(J, 2)), LEN(STR$(MO(J, 2))) - 1); CHR$(34)
 630 PRINT #2, ",,system.ini,"; SN$; ","; CHR$(34); "fontsize="; CHR$(34); ","; CHR$(34); "fontsize=";
 640 IF FS$ = "S" THEN PRINT #2, "small";  ELSE PRINT #2, "large";
-650 PRINT #2, CHR$(34): PRINT #2, ""
+650 PRINT #2, CHR$(34)
+655 PRINT #2, ""
 660 NEXT K
 670 NEXT J
 680 CLOSE 2
