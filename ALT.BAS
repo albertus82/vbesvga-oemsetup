@@ -35,10 +35,10 @@
 372 PRINT #2, "[display]"
 374 REM Entries
 375 FOR J = 0 TO I: REM Cycle over all valid modes
-377 ID$ = RIGHT$(STR$(I), LEN(STR$(I)))
 383 FOR K = 0 TO 1: REM Create both large and small font entries for every video mode
 388 IF K = 0 THEN FS$ = "S" ELSE FS$ = "L"
-390 PRINT #2, "VBE"; ID$; FS$; "=1:"; DR$; ","; CHR$(34); "VBE/SVGA "; RIGHT$(STR$(MO(J, 0)), LEN(STR$(MO(J, 0)))); "x"; RIGHT$(STR$(MO(J, 1)), LEN(STR$(MO(J, 1)))); "x";
+389 ID$ = "VBE"; RIGHT$(STR$(I), LEN(STR$(I))); FS$
+390 PRINT #2, ID$; "=1:"; DR$; ","; CHR$(34); "VBE/SVGA "; RIGHT$(STR$(MO(J, 0)), LEN(STR$(MO(J, 0)))); "x"; RIGHT$(STR$(MO(J, 1)), LEN(STR$(MO(J, 1)))); "x";
 400 IF DE% = 8 THEN PRINT #2, "256";
 410 IF DE% = 16 THEN PRINT #2, "64k";
 420 IF DE% = 24 THEN PRINT #2, "16M";
@@ -46,7 +46,7 @@
 440 IF FS$ = "S" THEN PRINT #2, "Small";  ELSE PRINT #2, "Large";
 450 PRINT #2, " fonts"; CHR$(34); ","; CHR$(34); "100,";
 460 IF FS$ = "S" THEN PRINT #2, "96,96";  ELSE PRINT #2, "120,120";
-470 PRINT #2, CHR$(34); ",,2:VGALOGO.LGO, 2:VDDVBE.386, 2:VGADIB.3GR,,2:VGALOGO.RLE,VBE"; ID$; FS$
+470 PRINT #2, CHR$(34); ",,2:VGALOGO.LGO, 2:VDDVBE.386, 2:VGADIB.3GR,,2:VGALOGO.RLE,"; ID$
 560 NEXT K
 570 NEXT J
 571 REM Settings
