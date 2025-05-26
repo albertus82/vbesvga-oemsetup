@@ -32,7 +32,7 @@
 320 OPEN "OEMSETUP.INF" FOR OUTPUT AS #2
 330 REM Header
 340 PRINT #2, "[disks]"
-350 PRINT #2, "    1 =. ,"; CHR$(34); "PluMGMK VBE SVGA Driver"; CHR$(34); ",disk1"
+350 PRINT #2, "1=.,"; CHR$(34); "PluMGMK VBE SVGA Driver"; CHR$(34); ",disk1"
 360 PRINT #2, ""
 370 PRINT #2, "[display]"
 380 REM Entries
