@@ -1,4 +1,4 @@
-# VBE SVGA oemsetup.inf
+# vbesvga.drv oemsetup.inf
 
 #### `OEMSETUP.INF` generator for [vbesvga.drv](https://github.com/PluMGMK/vbesvga.drv).
 
