@@ -4,7 +4,7 @@
 40 DIM MO(255, 2): REM Distinct video modes (width, height, depth)
 50 REM Collect valid video modes for Windows
 60 SHELL "VIDMODES > VIDMODES.TMP"
-70 OPEN "VIDMODES.TMP" FOR INPUT AS #1
+70 OPEN "I", 1, "VIDMODES.TMP"
 80 WHILE A$ <> "Available modes:"
 90 LINE INPUT #1, A$: REM Skip line
 100 WEND
@@ -29,7 +29,7 @@
 290 KILL "VIDMODES.TMP"
 300 I = I - 1
 310 REM Write OEMSETUP.INF file
-320 OPEN "OEMSETUP.INF" FOR OUTPUT AS #2
+320 OPEN "O", 2, "OEMSETUP.INF"
 330 REM Header
 340 PRINT #2, "[disks]"
 350 PRINT #2, "1=.,"; CHR$(34); "PluMGMK VBE SVGA Driver"; CHR$(34); ",disk1"
