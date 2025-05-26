@@ -1,5 +1,8 @@
+5 REM OEMSETUP.INF generator for PluMGMK VBE/SVGA Driver
+7 REM Tested on GW-BASIC 3.23 and QBASIC 1.1
 10 DR$ = "VBESVGA.DRV"
 20 DIM MO(255, 2): REM Distinct video modes (width, height, depth)
+25 REM Collect valid video modes for Windows
 30 SHELL "VIDMODES > VIDMODES.TMP"
 40 OPEN "VIDMODES.TMP" FOR INPUT AS #1
 50 WHILE A$ <> "Available modes:"
