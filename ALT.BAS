@@ -39,9 +39,9 @@
 388 IF K = 0 THEN FS$ = "S" ELSE FS$ = "L"
 389 ID$ = "VBE"; RIGHT$(STR$(I), LEN(STR$(I))); FS$
 390 PRINT #2, ID$; "=1:"; DR$; ","; CHR$(34); "VBE/SVGA "; RIGHT$(STR$(MO(J, 0)), LEN(STR$(MO(J, 0)))); "x"; RIGHT$(STR$(MO(J, 1)), LEN(STR$(MO(J, 1)))); "x";
-400 IF DE% = 8 THEN PRINT #2, "256";
-410 IF DE% = 16 THEN PRINT #2, "64k";
-420 IF DE% = 24 THEN PRINT #2, "16M";
+400 IF MO(J, 2) = 8 THEN PRINT #2, "256";
+410 IF MO(J, 2) = 16 THEN PRINT #2, "64k";
+420 IF MO(J, 2) = 24 THEN PRINT #2, "16M";
 430 PRINT #2, " ";
 440 IF FS$ = "S" THEN PRINT #2, "Small";  ELSE PRINT #2, "Large";
 450 PRINT #2, " fonts"; CHR$(34); ","; CHR$(34); "100,";
@@ -52,7 +52,7 @@
 571 REM Settings
 572 FOR J = 0 TO I: REM Cycle again over all valid modes
 578 FOR K = 0 TO 1: REM Create both large and small font entries for every video mode
-581 IF K = 0 THEN FS$ = "S" ELSE FS$ = "L" 
+581 IF K = 0 THEN FS$ = "S" ELSE FS$ = "L"
 583 PRINT #2, "[VBE"; RIGHT$(STR$(I), LEN(STR$(I))); FS$; "]"
 585 PRINT #2, ",,system.ini,"; DR$; ","; CHR$(34); "W"; CHR$(34); ","; CHR$(34); "Width="; RIGHT$(STR$(MO(J, 0)), LEN(STR$(MO(J, 0)))); CHR$(34)
 587 PRINT #2, ",,system.ini,"; DR$; ","; CHR$(34); "H"; CHR$(34); ","; CHR$(34); "Height="; RIGHT$(STR$(MO(J, 1)), LEN(STR$(MO(J, 1)))); CHR$(34)
