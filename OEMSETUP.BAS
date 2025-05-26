@@ -39,7 +39,7 @@
 390 FOR J = 0 TO I: REM Cycle over all valid modes
 400 FOR K = 0 TO 1: REM Create both large and small font entries for every mode
 410 IF K = 0 THEN FS$ = "S" ELSE FS$ = "L"
-430 PRINT #2, "VBE"; FS$; RIGHT$(STR$(J), LEN(STR$(J)) - 1); "=1:VBESVGA.DRV,"; CHR$(34); "VBE SVGA "; RIGHT$(STR$(MO(J, 0)), LEN(STR$(MO(J, 0))) - 1); "x"; RIGHT$(STR$(MO(J, 1)), LEN(STR$(MO(J, 1))) - 1); "x";
+430 PRINT #2, "VBE"; FS$; RIGHT$(STR$(J), LEN(STR$(J)) - 1); "=1:"; SN$; ","; CHR$(34); "VBE SVGA "; RIGHT$(STR$(MO(J, 0)), LEN(STR$(MO(J, 0))) - 1); "x"; RIGHT$(STR$(MO(J, 1)), LEN(STR$(MO(J, 1))) - 1); "x";
 440 IF MO(J, 2) = 8 THEN PRINT #2, "256";
 450 IF MO(J, 2) = 16 THEN PRINT #2, "64k";
 460 IF MO(J, 2) = 24 THEN PRINT #2, "16M";
