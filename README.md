@@ -17,12 +17,12 @@ GWBASIC OEMSETUP
 QBASIC /RUN OEMSETUP
 ```
 
-2. Start Windows 3.1
-3. ***Main*** > ***Windows Setup***
-4. ***Options*** > ***Change system settings...***
-5. ***Display*** > ***Other display (Requires disk from OEM)...***
-6. Provide the path where the driver files are located
-7. Select the desired video mode
+3. Start Windows 3.1
+4. ***Main*** > ***Windows Setup***
+5. ***Options*** > ***Change system settings...***
+6. ***Display*** > ***Other display (Requires disk from OEM)...***
+7. Provide the path where the driver files are located
+8. Select the desired video mode
 
 ### Troubleshooting
 
