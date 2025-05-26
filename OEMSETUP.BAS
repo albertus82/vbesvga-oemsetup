@@ -39,31 +39,30 @@
 390 FOR J = 0 TO I: REM Cycle over all valid modes
 400 FOR K = 0 TO 1: REM Create both large and small font entries for every mode
 410 IF K = 0 THEN FS$ = "S" ELSE FS$ = "L"
-430 PRINT #2, "VBE"; FS$; RIGHT$(STR$(J), LEN(STR$(J)) - 1); "=1:VBESVGA.DRV,"; CHR$(34); "VBE SVGA "; RIGHT$(STR$(MO(J, 0)), LEN(STR$(MO(J, 0))) - 1); "x"; RIGHT$(STR$(MO(J, 1)), LEN(STR$(MO(J, 1))) - 1); "x";
-440 IF MO(J, 2) = 8 THEN PRINT #2, "256";
-450 IF MO(J, 2) = 16 THEN PRINT #2, "64k";
-460 IF MO(J, 2) = 24 THEN PRINT #2, "16M";
-470 PRINT #2, " ";
-480 IF FS$ = "S" THEN PRINT #2, "Small";  ELSE PRINT #2, "Large";
-490 PRINT #2, " fonts"; CHR$(34); ","; CHR$(34); "100,";
-500 IF FS$ = "S" THEN PRINT #2, "96,96";  ELSE PRINT #2, "120,120";
-510 PRINT #2, CHR$(34); ",,2:VGALOGO.LGO,1:VDDVBE.386,2:VGADIB.3GR,,2:VGALOGO.RLE,VBE"; RIGHT$(STR$(J), LEN(STR$(J)) - 1); FS$
-520 NEXT K
-530 NEXT J
-540 PRINT #2, ""
-550 REM Settings
-560 FOR J = 0 TO I: REM Cycle AGAIN over all valid modes
-570 FOR K = 0 TO 1: REM Create both large and small font entries for every mode
-580 IF K = 0 THEN FS$ = "S" ELSE FS$ = "L"
-590 PRINT #2, "[VBE"; RIGHT$(STR$(J), LEN(STR$(J)) - 1); FS$; "]"
-600 PRINT #2, ",,system.ini,"; SN$; ","; CHR$(34); "Width="; CHR$(34); ","; CHR$(34); "Width="; RIGHT$(STR$(MO(J, 0)), LEN(STR$(MO(J, 0))) - 1); CHR$(34)
-610 PRINT #2, ",,system.ini,"; SN$; ","; CHR$(34); "Height="; CHR$(34); ","; CHR$(34); "Height="; RIGHT$(STR$(MO(J, 1)), LEN(STR$(MO(J, 1))) - 1); CHR$(34)
-620 PRINT #2, ",,system.ini,"; SN$; ","; CHR$(34); "Depth="; CHR$(34); ","; CHR$(34); "Depth="; RIGHT$(STR$(MO(J, 2)), LEN(STR$(MO(J, 2))) - 1); CHR$(34)
-630 PRINT #2, ",,system.ini,"; SN$; ","; CHR$(34); "fontsize="; CHR$(34); ","; CHR$(34); "fontsize=";
-640 IF FS$ = "S" THEN PRINT #2, "small";  ELSE PRINT #2, "large";
-650 PRINT #2, CHR$(34)
-655 PRINT #2, ""
-660 NEXT K
-670 NEXT J
-680 CLOSE 2
-690 SYSTEM
+420 PRINT #2, "VBE"; FS$; RIGHT$(STR$(J), LEN(STR$(J)) - 1); "=1:VBESVGA.DRV,"; CHR$(34); "VBE SVGA "; RIGHT$(STR$(MO(J, 0)), LEN(STR$(MO(J, 0))) - 1); "x"; RIGHT$(STR$(MO(J, 1)), LEN(STR$(MO(J, 1))) - 1); "x";
+430 IF MO(J, 2) = 8 THEN PRINT #2, "256";
+440 IF MO(J, 2) = 16 THEN PRINT #2, "64k";
+450 IF MO(J, 2) = 24 THEN PRINT #2, "16M";
+460 PRINT #2, " ";
+470 IF FS$ = "S" THEN PRINT #2, "Small";  ELSE PRINT #2, "Large";
+480 PRINT #2, " fonts"; CHR$(34); ","; CHR$(34); "100,";
+490 IF FS$ = "S" THEN PRINT #2, "96,96";  ELSE PRINT #2, "120,120";
+500 PRINT #2, CHR$(34); ",,2:VGALOGO.LGO,1:VDDVBE.386,2:VGADIB.3GR,,2:VGALOGO.RLE,VBE"; RIGHT$(STR$(J), LEN(STR$(J)) - 1); FS$
+510 NEXT K
+520 NEXT J
+530 REM Settings
+540 FOR J = 0 TO I: REM Cycle AGAIN over all valid modes
+550 FOR K = 0 TO 1: REM Create both large and small font entries for every mode
+560 IF K = 0 THEN FS$ = "S" ELSE FS$ = "L"
+570 PRINT #2, ""
+580 PRINT #2, "[VBE"; RIGHT$(STR$(J), LEN(STR$(J)) - 1); FS$; "]"
+590 PRINT #2, ",,system.ini,"; SN$; ","; CHR$(34); "Width="; CHR$(34); ","; CHR$(34); "Width="; RIGHT$(STR$(MO(J, 0)), LEN(STR$(MO(J, 0))) - 1); CHR$(34)
+600 PRINT #2, ",,system.ini,"; SN$; ","; CHR$(34); "Height="; CHR$(34); ","; CHR$(34); "Height="; RIGHT$(STR$(MO(J, 1)), LEN(STR$(MO(J, 1))) - 1); CHR$(34)
+610 PRINT #2, ",,system.ini,"; SN$; ","; CHR$(34); "Depth="; CHR$(34); ","; CHR$(34); "Depth="; RIGHT$(STR$(MO(J, 2)), LEN(STR$(MO(J, 2))) - 1); CHR$(34)
+620 PRINT #2, ",,system.ini,"; SN$; ","; CHR$(34); "fontsize="; CHR$(34); ","; CHR$(34); "fontsize=";
+630 IF FS$ = "S" THEN PRINT #2, "small";  ELSE PRINT #2, "large";
+640 PRINT #2, CHR$(34)
+650 NEXT K
+660 NEXT J
+670 CLOSE 2
+680 SYSTEM
