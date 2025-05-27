@@ -1,6 +1,6 @@
 # oemsetup.inf for vbesvga.drv
 
-#### `OEMSETUP.INF` generator for [vbesvga.drv](https://github.com/PluMGMK/vbesvga.drv).
+#### `OEMSETUP.INF` generator for [vbesvga.drv](https://github.com/PluMGMK/vbesvga.drv), obviously written in an obsolete programming language and therefore easily runnable from DOS.
 
 ### Usage
 
