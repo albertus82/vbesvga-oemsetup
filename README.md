@@ -2,7 +2,7 @@
 
 #### `OEMSETUP.INF` generator for [vbesvga.drv](https://github.com/PluMGMK/vbesvga.drv)
 
-Obviously written in an obsolete programming language and therefore easily runnable from DOS.
+Obviously written in an obsolete programming language so that it is easily executable from DOS.
 
 ### Usage
 
@@ -19,7 +19,7 @@ GWBASIC OEMSETUP
 QBASIC /RUN OEMSETUP
 ```
 
-3. Start Windows 3.1
+3. Start Windows 3.1x
 4. ***Main*** > ***Windows Setup***
 5. ***Options*** > ***Change system settings...***
 6. ***Display*** > ***Other display (Requires disk from OEM)...***
