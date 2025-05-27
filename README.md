@@ -4,7 +4,7 @@
 
 ### Usage
 
-1. Place `OEMSETUP.BAS` file in the same directory that contains the driver files, including `VIDMODES.COM`
+1. Place [`OEMSETUP.BAS`](OEMSETUP.BAS) file in the same directory that contains the driver files, including `VIDMODES.COM`
 2. Run one of the following commands depending on the BASIC interpreter you have:
 
 #### GW-BASIC
