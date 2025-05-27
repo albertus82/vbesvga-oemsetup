@@ -3,8 +3,8 @@
 30 SN$ = "VBESVGA.DRV"
 40 DIM MO(255, 2): REM Distinct video modes (width, height, depth)
 50 REM Collect valid video modes for Windows
-60 SHELL "VIDMODES > VIDMODES.TMP"
-70 OPEN "I", 1, "VIDMODES.TMP"
+60 SHELL "VIDMODES > VIDMODES.OUT"
+70 OPEN "I", 1, "VIDMODES.OUT"
 80 WHILE A$ <> "Available modes:"
 90 LINE INPUT #1, A$: REM Skip line
 100 WEND
@@ -26,7 +26,7 @@
 260 I = I + 1
 270 WEND
 280 CLOSE 1
-290 KILL "VIDMODES.TMP"
+290 KILL "VIDMODES.OUT"
 300 I = I - 1
 310 REM Write OEMSETUP.INF file
 320 OPEN "O", 2, "OEMSETUP.INF"
