@@ -14,8 +14,8 @@
 140 IF LEN(A$) = 0 THEN 270: REM Skip empty lines
 150 WI% = VAL(MID$(A$, INSTR(A$, ":") + 2, INSTR(A$, "*") - INSTR(A$, ":") - 2))
 160 HE% = VAL(MID$(A$, INSTR(A$, "*") + 1, INSTR(INSTR(A$, "*") + 1, A$, "*") - INSTR(A$, "*") - 1))
-170 DE% = VAL(MID$(A$, INSTR(INSTR(A$, "*") + 1, A$, "*") + 1, INSTR(INSTR(A$, " ") + 1, A$, " ") - INSTR(INSTR(A$, "*") + 1, A$, "*") - 1))
-180 IF WI% < 640 OR HE% < 480 THEN 270: REM Ignore useless resolutions
+170 IF WI% < 640 OR HE% < 480 THEN 270: REM Ignore useless resolutions
+180 DE% = VAL(MID$(A$, INSTR(INSTR(A$, "*") + 1, A$, "*") + 1, INSTR(INSTR(A$, " ") + 1, A$, " ") - INSTR(INSTR(A$, "*") + 1, A$, "*") - 1))
 190 IF DE% > 24 THEN DE% = 24: REM Max value allowed for Depth is 24
 200 FOR J = 0 TO I
 210 IF MO(J, 0) = WI% AND MO(J, 1) = HE% AND MO(J, 2) = DE% THEN 270: REM Avoid duplicates
