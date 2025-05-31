@@ -2,7 +2,7 @@
 
 `OEMSETUP.INF` generator for [vbesvga.drv](https://github.com/PluMGMK/vbesvga.drv), obviously written in an obsolete programming language so that it can be easily executed from DOS.
 
-### Prerequisite
+### Prerequisites
 
 * Setup Windows 3.1x with the default VGA driver (640x480x16)
 * Make sure you have a BASIC interpreter like **GW-BASIC** or **QBasic**.
