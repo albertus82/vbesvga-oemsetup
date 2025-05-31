@@ -33,7 +33,7 @@
 330 REM Header
 340 PRINT #2, "[disks]"
 350 PRINT #2, "1 =. ,"; CHR$(34); "PluMGMK VBE SVGA Driver"; CHR$(34); ",disk1"
-360 PRINT #2, "2 =. ,"; CHR$(34); "Microsoft Windows"; CHR$(34); ",disk2"
+360 PRINT #2, "2 =. ,"; CHR$(34); "Microsoft Windows VGA Driver"; CHR$(34); ",disk2"
 370 PRINT #2, ""
 380 PRINT #2, "[display]"
 390 REM Entries
@@ -48,7 +48,7 @@
 480 IF FS$ = "s" THEN PRINT #2, "Small";  ELSE PRINT #2, "Large";
 490 PRINT #2, " fonts"; CHR$(34); ","; CHR$(34); "100,";
 500 IF FS$ = "s" THEN PRINT #2, "96,96";  ELSE PRINT #2, "120,120";
-510 PRINT #2, CHR$(34); ",2:vgacolor.2gr,2:vgalogo.lgo,1:vddvbe.386,2:vgadib.3gr,,2:vgalogo.rle,vbe"; RIGHT$(STR$(J), LEN(STR$(J)) - 1); FS$
+510 PRINT #2, CHR$(34); ",2:vgacolor.2gr,2:vgalogo.lgo,1:vddvbe.386,2:vga.3gr,,2:vgalogo.rle,vbe"; RIGHT$(STR$(J), LEN(STR$(J)) - 1); FS$
 520 NEXT K, J
 530 REM Settings
 540 FOR J = 0 TO I: REM Cycle AGAIN over all valid modes
