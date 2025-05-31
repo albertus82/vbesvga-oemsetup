@@ -30,6 +30,12 @@ QBASIC /RUN OEMSETUP
 
 ### Troubleshooting
 
+#### Setup asking for Windows disks
+
+TODO
+
+#### Setup in DOS mode
+
 Often the generated file cannot be used from Windows Setup in DOS mode (`windows\SETUP.EXE`) because it's too large.
 
 If you're stuck in DOS mode due to video driver issues and cannot change the driver from `windows\SETUP.EXE` due to out-of-memory errors, delete the `windows\SYSTEM\OEMn.INF` file corresponding to this driver (check inside with `EDIT` or similar beforehand), then launch `windows\SETUP.EXE` again and select ***VGA*** or another generic driver.
