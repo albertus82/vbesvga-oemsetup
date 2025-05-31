@@ -33,8 +33,7 @@ QBASIC /RUN OEMSETUP
 
 #### Setup asking for Windows disks
 
-1. Try specifying the `windows\SYSTEM` path instead.
-2. Specify a directory containing the `VGADIB.3GR` file.
+Try specifying the driver path again or the `windows\SYSTEM` path.
 
 #### Setup in DOS mode
 
