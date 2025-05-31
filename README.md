@@ -33,7 +33,7 @@ QBASIC /RUN OEMSETUP
 
 #### Setup asking for Windows disks
 
-TODO
+Try spefifying the `windows\SYSTEM` path instead.
 
 #### Setup in DOS mode
 
