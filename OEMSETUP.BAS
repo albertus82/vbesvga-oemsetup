@@ -33,7 +33,7 @@
 330 REM Header
 340 PRINT #2, "[disks]"
 350 PRINT #2, "1 =. ,"; CHR$(34); "PluMGMK VBE SVGA Driver"; CHR$(34); ",disk1"
-360 PRINT #2, "2 =. ,"; CHR$(34); "Microsoft Windows VGA Driver"; CHR$(34); ",disk2"
+360 PRINT #2, "2 =. ,"; CHR$(34); "Windows System VGA Driver"; CHR$(34); ",disk2"
 370 PRINT #2, ""
 380 PRINT #2, "[display]"
 390 REM Entries
