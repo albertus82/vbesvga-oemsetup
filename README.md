@@ -11,17 +11,14 @@
 
 1. Place [`OEMSETUP.BAS`](OEMSETUP.BAS) file in the same directory that contains the driver files, including `VIDMODES.COM`
 2. Run one of the following commands depending on the BASIC interpreter you have:
-
    #### GW-BASIC
    ```
    GWBASIC OEMSETUP
    ```
-
    #### QBASIC
    ```
    QBASIC /RUN OEMSETUP
    ```
-
 3. Start Windows 3.1x
 4. ***Main*** > ***Windows Setup***
 5. ***Options*** > ***Change system settings...***
