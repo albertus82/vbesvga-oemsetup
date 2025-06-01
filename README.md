@@ -32,7 +32,7 @@
 
 Try specifying the driver path again or the `%WINDIR%\SYSTEM` path.
 
-#### Setup in DOS mode
+#### Out-of-memory error in DOS mode setup
 
 Often the generated file cannot be used from Windows Setup in DOS mode (`%WINDIR%\SETUP.EXE`) because it's too large.
 
