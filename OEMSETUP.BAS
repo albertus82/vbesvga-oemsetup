@@ -1,5 +1,5 @@
 10 REM OEMSETUP.INF generator for PluMGMK VBE SVGA Driver
-20 REM Tested on GW-BASIC 3.23 and QBasic 1.x
+20 REM Tested on GW-BASIC 3.2x and QBasic 1.x
 30 SN$ = "vbesvga.drv"
 40 DIM MO(255, 2): REM Distinct video modes (width, height, depth)
 50 REM Collect valid video modes for Windows
