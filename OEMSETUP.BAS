@@ -1,4 +1,4 @@
-10 REM OEMSETUP.INF generator for PluMGMK VBE SVGA Driver
+10 REM OEMSETUP.INF generator for PluMGMK VBE SVGA driver
 20 REM Tested on GW-BASIC 3.2x and QBasic 1.x
 30 SN$ = "vbesvga.drv"
 40 DIM MO(255, 2): REM Distinct video modes (width, height, depth)
@@ -32,15 +32,15 @@
 320 OPEN "O", 2, "oemsetup.inf"
 330 REM Header
 340 PRINT #2, "[disks]"
-350 PRINT #2, "1 =. ,"; CHR$(34); "PluMGMK VBE SVGA Driver"; CHR$(34); ",disk1"
-360 PRINT #2, "2 =. ,"; CHR$(34); "Windows System VGA Driver"; CHR$(34); ",disk2"
+350 PRINT #2, "V =. ,"; CHR$(34); "PluMGMK VBE SVGA driver location"; CHR$(34); ",disk1"
+360 PRINT #2, "2 =. ,"; CHR$(34); "Microsoft Windows 3.x Disk #2"; CHR$(34); ",disk2"
 370 PRINT #2, ""
 380 PRINT #2, "[display]"
 390 REM Entries
 400 FOR J = 0 TO I: REM Cycle over all valid modes
 410 FOR K = 0 TO 1: REM Create both large and small font entries for every mode
 420 IF K = 0 THEN FS$ = "s" ELSE FS$ = "l"
-430 PRINT #2, "vbe"; RIGHT$(STR$(J), LEN(STR$(J)) - 1); FS$; "f=1:vbesvga.drv,"; CHR$(34); "VBE SVGA "; RIGHT$(STR$(MO(J, 0)), LEN(STR$(MO(J, 0))) - 1); "x"; RIGHT$(STR$(MO(J, 1)), LEN(STR$(MO(J, 1))) - 1); "x";
+430 PRINT #2, "vbe"; RIGHT$(STR$(J), LEN(STR$(J)) - 1); FS$; "f=V:vbesvga.drv,"; CHR$(34); "VBE SVGA "; RIGHT$(STR$(MO(J, 0)), LEN(STR$(MO(J, 0))) - 1); "x"; RIGHT$(STR$(MO(J, 1)), LEN(STR$(MO(J, 1))) - 1); "x";
 440 IF MO(J, 2) = 8 THEN PRINT #2, "256";
 450 IF MO(J, 2) = 16 THEN PRINT #2, "64k";
 460 IF MO(J, 2) = 24 THEN PRINT #2, "16M";
@@ -48,7 +48,7 @@
 480 IF FS$ = "s" THEN PRINT #2, "Small";  ELSE PRINT #2, "Large";
 490 PRINT #2, " fonts"; CHR$(34); ","; CHR$(34); "100,";
 500 IF FS$ = "s" THEN PRINT #2, "96,96";  ELSE PRINT #2, "120,120";
-510 PRINT #2, CHR$(34); ",2:vgacolor.2gr,2:vgalogo.lgo,1:vddvbe.386,2:vga.3gr,,2:vgalogo.rle,vbe"; RIGHT$(STR$(J), LEN(STR$(J)) - 1); FS$
+510 PRINT #2, CHR$(34); ",2:vgacolor.2gr,2:vgalogo.lgo,V:vddvbe.386,2:vgadib.3gr,,2:vgalogo.rle,vbe"; RIGHT$(STR$(J), LEN(STR$(J)) - 1); FS$
 520 NEXT K, J
 530 REM Settings
 540 FOR J = 0 TO I: REM Cycle AGAIN over all valid modes
