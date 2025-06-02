@@ -5,7 +5,8 @@
 ### Prerequisites
 
 * Setup Windows 3.1x with the default VGA driver (640x480x16)
-* Make sure you have a BASIC interpreter like **GW-BASIC** or **QBasic**.
+* Make sure you have a BASIC interpreter like **GW-BASIC** or **QBasic**
+* Have your Windows Installation Disk 2 handy (it contains `VGADIB.3GR`).
 
 ### Usage
 
@@ -30,7 +31,7 @@
 
 #### Setup asking for Windows disks
 
-Try specifying the driver path again or the `%WINDIR%\SYSTEM` path.
+If you selected VGA during Windows setup, all the required dependencies are already present in `%WINDIR%\SYSTEM` except `VGADIB.3GR` which is located on disk 2 (both 3.5" and 5.25" versions). If Windows continues to ask for a disk, try specifying the driver path again or the `%WINDIR%\SYSTEM` path.
 
 #### Out-of-memory error in DOS mode setup
 
