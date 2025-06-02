@@ -32,7 +32,7 @@
 320 OPEN "O", 2, "oemsetup.inf"
 330 REM Header
 340 PRINT #2, "[disks]"
-350 PRINT #2, "V =. ,"; CHR$(34); "PluMGMK VBE SVGA driver location"; CHR$(34); ",disk1"
+350 PRINT #2, "V =. ,"; CHR$(34); "PluMGMK VBE SVGA driver location"; CHR$(34); ",diskV"
 360 PRINT #2, "2 =. ,"; CHR$(34); "Microsoft Windows 3.x Disk #2"; CHR$(34); ",disk2"
 370 PRINT #2, ""
 380 PRINT #2, "[display]"
