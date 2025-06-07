@@ -11,7 +11,7 @@
 110 I = 0
 120 WHILE NOT EOF(1)
 130 LINE INPUT #1, A$
-140 IF LEN(A$) = 0 THEN 270: REM Skip empty lines
+140 IF LEN(A$) = 0 OR INSTR(A$, "NG for VBESVGA.DRV") <> 0 THEN 270: REM Skip empty lines and "no good" modes
 150 WI% = VAL(MID$(A$, INSTR(A$, ":") + 2, INSTR(A$, "*") - INSTR(A$, ":") - 2))
 160 HE% = VAL(MID$(A$, INSTR(A$, "*") + 1, INSTR(INSTR(A$, "*") + 1, A$, "*") - INSTR(A$, "*") - 1))
 170 IF WI% < 640 OR HE% < 480 THEN 270: REM Ignore useless resolutions
@@ -42,6 +42,7 @@
 420 IF K = 0 THEN FS$ = "s" ELSE FS$ = "l"
 430 PRINT #2, "vbe" + RIGHT$(STR$(J), LEN(STR$(J)) - 1) + FS$ + "f=V:vbesvga.drv," + CHR$(34) + "VBE SVGA " + RIGHT$(STR$(MO(J, 0)), LEN(STR$(MO(J, 0))) - 1) + "x" + RIGHT$(STR$(MO(J, 1)), LEN(STR$(MO(J, 1))) - 1) + "x";
 440 IF MO(J, 2) = 8 THEN PRINT #2, "256";
+445 IF MO(J, 2) = 15 THEN PRINT #2, "32k";
 450 IF MO(J, 2) = 16 THEN PRINT #2, "64k";
 460 IF MO(J, 2) = 24 THEN PRINT #2, "16M";
 470 PRINT #2, " ";
