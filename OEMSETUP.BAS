@@ -1,6 +1,5 @@
 10 REM OEMSETUP.INF generator for PluMGMK VBE SVGA driver
 20 REM Tested on GW-BASIC 3.2x and QBasic 1.x
-30 SN$ = "vbesvga.drv"
 40 DIM MO(255, 2): REM Distinct video modes (width, height, depth)
 50 REM Collect valid video modes for Windows
 60 SHELL "vidmodes > vidmodes.out"
@@ -40,7 +39,7 @@
 400 FOR J = 0 TO I: REM Cycle over all valid modes
 410 FOR K = 0 TO 1: REM Create both large and small font entries for every mode
 420 IF K = 0 THEN FS$ = "s" ELSE FS$ = "l"
-430 PRINT #2, "vbe" + RIGHT$(STR$(J), LEN(STR$(J)) - 1) + FS$ + "f=V:vbesvga.drv," + CHR$(34) + "VBE SVGA " + RIGHT$(STR$(MO(J, 0)), LEN(STR$(MO(J, 0))) - 1) + "x" + RIGHT$(STR$(MO(J, 1)), LEN(STR$(MO(J, 1))) - 1) + "x";
+430 PRINT #2, "vbe" + RIGHT$(STR$(J), LEN(STR$(J)) - 1) + FS$ + "=V:vbesvga.drv," + CHR$(34) + "VBE SVGA " + RIGHT$(STR$(MO(J, 0)), LEN(STR$(MO(J, 0))) - 1) + "x" + RIGHT$(STR$(MO(J, 1)), LEN(STR$(MO(J, 1))) - 1) + "x";
 440 IF MO(J, 2) = 8 THEN PRINT #2, "256";
 450 IF MO(J, 2) = 15 THEN PRINT #2, "32k";
 460 IF MO(J, 2) = 16 THEN PRINT #2, "64k";
@@ -57,10 +56,10 @@
 570 IF K = 0 THEN FS$ = "s" ELSE FS$ = "l"
 580 PRINT #2, ""
 590 PRINT #2, "[vbe" + RIGHT$(STR$(J), LEN(STR$(J)) - 1) + FS$ + "]"
-600 PRINT #2, ",,system.ini," + SN$ + "," + CHR$(34) + "Width=" + CHR$(34) + "," + CHR$(34) + "Width=" + RIGHT$(STR$(MO(J, 0)), LEN(STR$(MO(J, 0))) - 1) + CHR$(34)
-610 PRINT #2, ",,system.ini," + SN$ + "," + CHR$(34) + "Height=" + CHR$(34) + "," + CHR$(34) + "Height=" + RIGHT$(STR$(MO(J, 1)), LEN(STR$(MO(J, 1))) - 1) + CHR$(34)
-620 PRINT #2, ",,system.ini," + SN$ + "," + CHR$(34) + "Depth=" + CHR$(34) + "," + CHR$(34) + "Depth=" + RIGHT$(STR$(MO(J, 2)), LEN(STR$(MO(J, 2))) - 1) + CHR$(34)
-630 PRINT #2, ",,system.ini," + SN$ + "," + CHR$(34) + "fontsize=" + CHR$(34) + "," + CHR$(34) + "fontsize=";
+600 PRINT #2, ",,system.ini,vbesvga.drv," + CHR$(34) + "Width=" + CHR$(34) + "," + CHR$(34) + "Width=" + RIGHT$(STR$(MO(J, 0)), LEN(STR$(MO(J, 0))) - 1) + CHR$(34)
+610 PRINT #2, ",,system.ini,vbesvga.drv," + CHR$(34) + "Height=" + CHR$(34) + "," + CHR$(34) + "Height=" + RIGHT$(STR$(MO(J, 1)), LEN(STR$(MO(J, 1))) - 1) + CHR$(34)
+620 PRINT #2, ",,system.ini,vbesvga.drv," + CHR$(34) + "Depth=" + CHR$(34) + "," + CHR$(34) + "Depth=" + RIGHT$(STR$(MO(J, 2)), LEN(STR$(MO(J, 2))) - 1) + CHR$(34)
+630 PRINT #2, ",,system.ini,vbesvga.drv," + CHR$(34) + "fontsize=" + CHR$(34) + "," + CHR$(34) + "fontsize=";
 640 IF FS$ = "s" THEN PRINT #2, "small";  ELSE PRINT #2, "large";
 650 PRINT #2, CHR$(34)
 660 NEXT K, J
