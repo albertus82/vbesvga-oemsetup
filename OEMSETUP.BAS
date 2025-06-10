@@ -31,8 +31,8 @@
 310 OPEN "O", 2, "oemsetup.inf"
 320 REM Header
 330 PRINT #2, "[disks]"
-340 PRINT #2, "V =. ," + CHR$(34) + "PluMGMK VBE SVGA driver" + CHR$(34) + ",diskV"
-350 PRINT #2, "2 =. ," + CHR$(34) + "Microsoft Windows 3.x Disk #2" + CHR$(34) + ",disk2"
+340 PRINT #2, "V=. ," + CHR$(34) + "PluMGMK VBE SVGA driver path" + CHR$(34) + ",diskV"
+350 PRINT #2, "2=. ," + CHR$(34) + "Microsoft Windows 3.x Disk #2" + CHR$(34) + ",disk2"
 360 PRINT #2, ""
 370 PRINT #2, "[display]"
 380 REM Entries
@@ -56,9 +56,9 @@
 560 IF K = 0 THEN FS$ = "s" ELSE FS$ = "l"
 570 PRINT #2, ""
 580 PRINT #2, "[vbe" + RIGHT$(STR$(J), LEN(STR$(J)) - 1) + FS$ + "]"
-590 PRINT #2, ",,system.ini,vbesvga.drv," + CHR$(34) + "Width=" + CHR$(34) + "," + CHR$(34) + "Width=" + RIGHT$(STR$(MO(J, 0)), LEN(STR$(MO(J, 0))) - 1) + CHR$(34)
-600 PRINT #2, ",,system.ini,vbesvga.drv," + CHR$(34) + "Height=" + CHR$(34) + "," + CHR$(34) + "Height=" + RIGHT$(STR$(MO(J, 1)), LEN(STR$(MO(J, 1))) - 1) + CHR$(34)
-610 PRINT #2, ",,system.ini,vbesvga.drv," + CHR$(34) + "Depth=" + CHR$(34) + "," + CHR$(34) + "Depth=" + RIGHT$(STR$(MO(J, 2)), LEN(STR$(MO(J, 2))) - 1) + CHR$(34)
+590 PRINT #2, ",,system.ini,vbesvga.drv," + CHR$(34) + "width=" + CHR$(34) + "," + CHR$(34) + "width=" + RIGHT$(STR$(MO(J, 0)), LEN(STR$(MO(J, 0))) - 1) + CHR$(34)
+600 PRINT #2, ",,system.ini,vbesvga.drv," + CHR$(34) + "height=" + CHR$(34) + "," + CHR$(34) + "height=" + RIGHT$(STR$(MO(J, 1)), LEN(STR$(MO(J, 1))) - 1) + CHR$(34)
+610 PRINT #2, ",,system.ini,vbesvga.drv," + CHR$(34) + "depth=" + CHR$(34) + "," + CHR$(34) + "depth=" + RIGHT$(STR$(MO(J, 2)), LEN(STR$(MO(J, 2))) - 1) + CHR$(34)
 620 PRINT #2, ",,system.ini,vbesvga.drv," + CHR$(34) + "fontsize=" + CHR$(34) + "," + CHR$(34) + "fontsize=";
 630 IF FS$ = "s" THEN PRINT #2, "small";  ELSE PRINT #2, "large";
 640 PRINT #2, CHR$(34)
