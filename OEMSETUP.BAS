@@ -38,17 +38,17 @@
 470 NEXT FS, J
 480 REM Settings
 490 FOR J = 0 TO I: REM Cycle AGAIN over all valid modes
-500 FOR K = 0 TO 1: REM Create both large and small font entries for every mode
-510 IF K = 0 THEN FS$ = "s" ELSE FS$ = "l"
+500 FOR FS = 96 TO 120 STEP 24: REM Create both large and small font entries for every mode
+510 K$ = "vbe" + RIGHT$(STR$(J), LEN(STR$(J)) - 1): IF FS = 96 THEN K$ = K$ + "s" ELSE K$ = K$ + "l"
 520 PRINT #2, ""
-530 PRINT #2, "[vbe" + RIGHT$(STR$(J), LEN(STR$(J)) - 1) + FS$ + "]"
+530 PRINT #2, "[" + K$ + "]"
 540 PRINT #2, ",,system.ini,vbesvga.drv," + CHR$(34) + "width=" + CHR$(34) + "," + CHR$(34) + "width=" + RIGHT$(STR$(MO(J, 0)), LEN(STR$(MO(J, 0))) - 1) + CHR$(34)
 550 PRINT #2, ",,system.ini,vbesvga.drv," + CHR$(34) + "height=" + CHR$(34) + "," + CHR$(34) + "height=" + RIGHT$(STR$(MO(J, 1)), LEN(STR$(MO(J, 1))) - 1) + CHR$(34)
 560 PRINT #2, ",,system.ini,vbesvga.drv," + CHR$(34) + "depth=" + CHR$(34) + "," + CHR$(34) + "depth=" + RIGHT$(STR$(MO(J, 2)), LEN(STR$(MO(J, 2))) - 1) + CHR$(34)
 570 PRINT #2, ",,system.ini,vbesvga.drv," + CHR$(34) + "fontsize=" + CHR$(34) + "," + CHR$(34) + "fontsize=";
-580 IF FS$ = "s" THEN PRINT #2, "small";  ELSE PRINT #2, "large";
+580 IF FS = 96 THEN PRINT #2, "small";  ELSE PRINT #2, "large";
 590 PRINT #2, CHR$(34)
-600 NEXT K, J
+600 NEXT FS, J
 610 CLOSE 2
 620 SYSTEM: REM End of program
 630 REM Begin of the routine that collects valid video modes
