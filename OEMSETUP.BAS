@@ -9,20 +9,7 @@
 90 WEND
 100 I = 0
 110 WHILE NOT EOF(1)
-120 LINE INPUT #1, A$
-130 IF LEN(A$) = 0 OR INSTR(A$, "NG for VBESVGA.DRV") <> 0 THEN 260: REM Skip empty lines and "no good" modes
-140 WI% = VAL(MID$(A$, INSTR(A$, ":") + 2, INSTR(A$, "*") - INSTR(A$, ":") - 2))
-150 HE% = VAL(MID$(A$, INSTR(A$, "*") + 1, INSTR(INSTR(A$, "*") + 1, A$, "*") - INSTR(A$, "*") - 1))
-160 IF WI% < 640 OR HE% < 480 THEN 260: REM Ignore useless resolutions
-170 DE% = VAL(MID$(A$, INSTR(INSTR(A$, "*") + 1, A$, "*") + 1, INSTR(INSTR(A$, " ") + 1, A$, " ") - INSTR(INSTR(A$, "*") + 1, A$, "*") - 1))
-180 IF DE% > 24 THEN DE% = 24: REM Max value allowed for Depth is 24
-190 FOR J = 0 TO I
-200 IF MO(J, 0) = WI% AND MO(J, 1) = HE% AND MO(J, 2) = DE% THEN 260: REM Avoid duplicates
-210 NEXT J
-220 MO(I, 0) = WI%
-230 MO(I, 1) = HE%
-240 MO(I, 2) = DE%
-250 I = I + 1
+120 GOSUB 810
 260 WEND
 270 CLOSE 1
 280 KILL "vidmodes.out"
@@ -64,4 +51,20 @@
 640 PRINT #2, CHR$(34)
 650 NEXT K, J
 660 CLOSE 2
-670 SYSTEM
+670 SYSTEM: REM End of program
+810 REM Begin of the routine to collect valid video modes
+820 LINE INPUT #1, A$
+830 IF LEN(A$) = 0 OR INSTR(A$, "NG for VBESVGA.DRV") <> 0 THEN RETURN: REM Skip empty lines and "no good" modes
+840 WI% = VAL(MID$(A$, INSTR(A$, ":") + 2, INSTR(A$, "*") - INSTR(A$, ":") - 2))
+850 HE% = VAL(MID$(A$, INSTR(A$, "*") + 1, INSTR(INSTR(A$, "*") + 1, A$, "*") - INSTR(A$, "*") - 1))
+860 IF WI% < 640 OR HE% < 480 THEN RETURN: REM Ignore useless resolutions
+870 DE% = VAL(MID$(A$, INSTR(INSTR(A$, "*") + 1, A$, "*") + 1, INSTR(INSTR(A$, " ") + 1, A$, " ") - INSTR(INSTR(A$, "*") + 1, A$, "*") - 1))
+880 IF DE% > 24 THEN DE% = 24: REM Max value allowed for Depth is 24
+890 FOR J = 0 TO I
+900 IF MO(J, 0) = WI% AND MO(J, 1) = HE% AND MO(J, 2) = DE% THEN RETURN: REM Avoid duplicates
+910 NEXT J
+920 MO(I, 0) = WI%
+930 MO(I, 1) = HE%
+940 MO(I, 2) = DE%
+950 I = I + 1
+960 RETURN: REM End of the routine to collect valid video modes
