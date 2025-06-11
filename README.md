@@ -47,21 +47,21 @@ This GW-BASIC/QBasic program, OEMSETUP.BAS, is an automatic generator for an OEM
 
 ---
 
-## What Does This Program Do?
+## What does this program do?
 
 - **Purpose:**  
   It reads video modes supported by your system, filters them for Windows compatibility, and auto-generates a Windows 3.x OEMSETUP.INF installer script for the custom SVGA driver.
 
 ---
 
-## Step-by-Step Explanation
+## Step-by-step explanation
 
-### 1. **Initialize Video Mode Storage**
+### 1. **Initialize video mode storage**
 ```basic
 120 DIM MO(255, 2)  ' Array to store up to 256 video modes: width, height, depth
 ```
 
-### 2. **Collect Valid Video Modes**
+### 2. **Collect valid video modes**
 ```basic
 140 SHELL "vidmodes > vidmodes.out"           ' Runs vidmodes utility, saves output
 150 OPEN "I", 1, "vidmodes.out"               ' Opens output for reading
@@ -78,7 +78,7 @@ This GW-BASIC/QBasic program, OEMSETUP.BAS, is an automatic generator for an OEM
 ```
 - **For each mode line, it calls a parsing subroutine (see below) to extract mode details.**
 
-### 3. **Parsing and Filtering Video Modes**
+### 3. **Parsing and filtering video modes**
 ```basic
 630 REM Begin of the routine that collects valid video modes
 640 IF LEN(A$) = 0 OR INSTR(A$, "NG for VBESVGA.DRV") <> 0 THEN RETURN  ' Skip blanks and unsupported modes
@@ -103,7 +103,7 @@ This GW-BASIC/QBasic program, OEMSETUP.BAS, is an automatic generator for an OEM
 ```basic
 280 OPEN "O", 2, "oemsetup.inf"   ' Open output file
 ```
-**Writes Setup Sections:**
+**Writes setup sections:**
 - `[disks]`  
   Defines driver disks.
 
@@ -121,12 +121,12 @@ This GW-BASIC/QBasic program, OEMSETUP.BAS, is an automatic generator for an OEM
 
 - **For each mode and both font sizes, writes a display install line with the right parameters and friendly name.**
 
-- **Settings Sections:**  
+- **Settings sections:**  
   For each mode/font, writes a section with the required `system.ini` settings: width, height, depth, fontsize.
 
 ---
 
-## Key Features & Details
+## Key features & details
 
 - **Avoids Duplicates:** Only unique width/height/depth combinations are included.
 - **Mode Filtering:** Only modes with at least 640x480 resolution and up to 24-bit color are kept.
@@ -135,7 +135,7 @@ This GW-BASIC/QBasic program, OEMSETUP.BAS, is an automatic generator for an OEM
 
 ---
 
-## Example Output (Simplified)
+## Example output (simplified)
 The resulting `oemsetup.inf` will include sections like:
 ```
 [disks]
