@@ -90,8 +90,8 @@ This GW-BASIC/QBasic program, OEMSETUP.BAS, is an automatic generator for an OEM
 690 FOR J = 0 TO I
 700 IF MO(J, 0) = WI% AND MO(J, 1) = HE% AND MO(J, 2) = DE% THEN RETURN  ' No duplicates
 710 NEXT J
-720 MO(I, 0) = WI% : MO(I, 1) = HE% : MO(I, 2) = DE%
-750 I = I + 1
+720 I = I + 1
+730 MO(I, 0) = WI% : MO(I, 1) = HE% : MO(I, 2) = DE%
 760 RETURN
 ```
 - **Skips blank lines and modes flagged as “no good”.**
