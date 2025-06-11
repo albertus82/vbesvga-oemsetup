@@ -39,6 +39,8 @@ Often the generated `OEMSETUP.INF` cannot be used from Windows Setup in DOS mode
 
 If you're stuck in DOS mode due to video driver issues and cannot change the driver from `%WINDIR%\SETUP.EXE` due to out-of-memory errors, delete the `%WINDIR%\SYSTEM\OEMn.INF` file corresponding to this driver (check inside with `EDIT` or similar beforehand), then launch `%WINDIR%\SETUP.EXE` again and select **VGA**.
 
+---
+
 # Explanation by Copilot
 
 This GW-BASIC/QBasic program, OEMSETUP.BAS, is an automatic generator for an OEMSETUP.INF file used to install the PluMGMK VBE SVGA driver in Windows 3.x. It analyzes available video modes and writes the necessary installer entries. Here’s a detailed breakdown:
