@@ -73,7 +73,7 @@ This GW-BASIC/QBasic program, OEMSETUP.BAS, is an automatic generator for an OEM
 ```basic
 200 WHILE NOT EOF(1)
 210 LINE INPUT #1, A$
-220 GOSUB 630  ' Parse and store valid video mode
+220 GOSUB 620  ' Parse and store valid video mode
 230 WEND
 ```
 - **For each mode line, it calls a parsing subroutine (see below) to extract mode details.**
