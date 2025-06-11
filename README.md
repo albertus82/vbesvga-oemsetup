@@ -80,19 +80,19 @@ This GW-BASIC/QBasic program, OEMSETUP.BAS, is an automatic generator for an OEM
 
 ### 3. **Parsing and filtering video modes**
 ```basic
-630 REM Begin of the routine that collects valid video modes
-640 IF LEN(A$) = 0 OR INSTR(A$, "NG for VBESVGA.DRV") <> 0 THEN RETURN  ' Skip blanks and unsupported modes
-650 WI% = ... ' Extract width
-660 HE% = ... ' Extract height
-670 IF WI% < 640 OR HE% < 480 THEN RETURN  ' Only keep at least 640x480
-680 DE% = ... ' Extract color depth
-690 IF DE% > 24 THEN DE% = 24   ' Max depth is 24-bit
-700 FOR J = 0 TO I
-710 IF MO(J, 0) = WI% AND MO(J, 1) = HE% AND MO(J, 2) = DE% THEN RETURN  ' No duplicates
-720 NEXT J
-730 MO(I, 0) = WI% : MO(I, 1) = HE% : MO(I, 2) = DE%
-760 I = I + 1
-770 RETURN
+620 REM Begin of the routine that collects valid video modes
+630 IF LEN(A$) = 0 OR INSTR(A$, "NG for VBESVGA.DRV") <> 0 THEN RETURN  ' Skip blanks and unsupported modes
+640 WI% = ... ' Extract width
+650 HE% = ... ' Extract height
+660 IF WI% < 640 OR HE% < 480 THEN RETURN  ' Only keep at least 640x480
+670 DE% = ... ' Extract color depth
+680 IF DE% > 24 THEN DE% = 24   ' Max depth is 24-bit
+690 FOR J = 0 TO I
+700 IF MO(J, 0) = WI% AND MO(J, 1) = HE% AND MO(J, 2) = DE% THEN RETURN  ' No duplicates
+710 NEXT J
+720 MO(I, 0) = WI% : MO(I, 1) = HE% : MO(I, 2) = DE%
+750 I = I + 1
+760 RETURN
 ```
 - **Skips blank lines and modes flagged as “no good”.**
 - **Parses width, height, and depth.**
@@ -101,7 +101,7 @@ This GW-BASIC/QBasic program, OEMSETUP.BAS, is an automatic generator for an OEM
 
 ### 4. **Generate OEMSETUP.INF**
 ```basic
-280 OPEN "O", 2, "oemsetup.inf"   ' Open output file
+270 OPEN "O", 2, "oemsetup.inf"   ' Open output file
 ```
 **Writes setup sections:**
 - `[disks]`  
@@ -111,12 +111,12 @@ This GW-BASIC/QBasic program, OEMSETUP.BAS, is an automatic generator for an OEM
   For each video mode and font size (small/large), writes an entry that identifies the display driver and settings.
 
 ```basic
-360 FOR J = 0 TO I
-370 FOR FS = 96 TO 120 STEP 24   ' For each font size (96=Small, 120=Large)
-380 K$ = ...                     ' Unique key for mode+font combo
-390 PRINT #2, ...                ' Writes display entry with mode details
+350 FOR J = 0 TO I
+360 FOR FS = 96 TO 120 STEP 24   ' For each font size (96=Small, 120=Large)
+370 K$ = ...                     ' Unique key for mode+font combo
+380 PRINT #2, ...                ' Writes display entry with mode details
 ...
-470 NEXT FS, J
+460 NEXT FS, J
 ```
 
 - **For each mode and both font sizes, writes a display install line with the right parameters and friendly name.**
