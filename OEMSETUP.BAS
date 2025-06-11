@@ -7,14 +7,13 @@
 160 WHILE A$ <> "Available modes:"
 170 LINE INPUT #1, A$: REM Skip line
 180 WEND
-190 I = 0
+190 I = -1
 200 WHILE NOT EOF(1)
 210 LINE INPUT #1, A$
 220 GOSUB 630
 230 WEND
 240 CLOSE 1
 250 KILL "vidmodes.out"
-260 I = I - 1
 270 REM Write OEMSETUP.INF file
 280 OPEN "O", 2, "oemsetup.inf"
 290 REM Header
@@ -61,8 +60,8 @@
 700 FOR J = 0 TO I
 710 IF MO(J, 0) = WI% AND MO(J, 1) = HE% AND MO(J, 2) = DE% THEN RETURN: REM Avoid duplicates
 720 NEXT J
-730 MO(I, 0) = WI%
-740 MO(I, 1) = HE%
-750 MO(I, 2) = DE%
-760 I = I + 1
+730 I = I + 1
+740 MO(I, 0) = WI%
+750 MO(I, 1) = HE%
+760 MO(I, 2) = DE%
 770 RETURN: REM End of the routine that collects valid video modes
