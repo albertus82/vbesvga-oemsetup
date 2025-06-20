@@ -29,10 +29,6 @@
 
 ### Troubleshooting
 
-#### Setup asking for Windows disks
-
-If you selected VGA during Windows setup, all the required dependencies are already present in `%WINDIR%\SYSTEM`. If Windows continues to ask for a disk, try specifying the driver path again or the `%WINDIR%\SYSTEM` path.
-
 #### Out-of-memory error in DOS mode setup
 
 Often the generated `OEMSETUP.INF` cannot be used from Windows Setup in DOS mode (`%WINDIR%\SETUP.EXE`) because it's too large.
