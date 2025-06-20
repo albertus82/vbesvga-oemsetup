@@ -31,7 +31,7 @@
 
 #### Out-of-memory error in DOS mode setup
 
-Often the generated `OEMSETUP.INF` cannot be used from Windows Setup in DOS mode (`%WINDIR%\SETUP.EXE`) because it's too large.
+Sometimes the generated `OEMSETUP.INF` cannot be used from Windows Setup in DOS mode (`%WINDIR%\SETUP.EXE`) because it's too large.
 
 If you're stuck in DOS mode due to video driver issues and cannot change the driver from `%WINDIR%\SETUP.EXE` due to out-of-memory errors, delete the `%WINDIR%\SYSTEM\OEMn.INF` file corresponding to this driver (check inside with `EDIT` or similar beforehand), then launch `%WINDIR%\SETUP.EXE` again and select **VGA**.
 
