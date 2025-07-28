@@ -19,7 +19,7 @@
 280 REM Header
 290 PRINT #2, "[disks]"
 300 PRINT #2, "V=. ," + CHR$(34) + "PluMGMK VBE SVGA driver path" + CHR$(34) + ",diskV"
-310 PRINT #2, "W=. ," + CHR$(34) + "Microsoft Windows 3.x Disk #2" + CHR$(34) + ",diskW"
+310 PRINT #2, "W=. ," + CHR$(34) + "Microsoft Windows 3.x setup path" + CHR$(34) + ",diskW"
 320 PRINT #2, ""
 330 PRINT #2, "[display]"
 340 REM Entries
