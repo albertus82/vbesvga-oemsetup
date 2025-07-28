@@ -19,7 +19,7 @@
 280 REM Header
 290 PRINT #2, "[disks]"
 300 PRINT #2, "V=. ," + CHR$(34) + "PluMGMK VBE SVGA driver path" + CHR$(34) + ",diskV"
-310 PRINT #2, "2=. ," + CHR$(34) + "Microsoft Windows 3.x Disk #2" + CHR$(34) + ",disk2"
+310 PRINT #2, "W=. ," + CHR$(34) + "Microsoft Windows 3.x Disk #2" + CHR$(34) + ",diskW"
 320 PRINT #2, ""
 330 PRINT #2, "[display]"
 340 REM Entries
@@ -33,7 +33,7 @@
 420 IF MO(J, 2) = 24 THEN PRINT #2, "16M";
 430 PRINT #2, " ";
 440 IF FS = 96 THEN PRINT #2, "Small";  ELSE PRINT #2, "Large";
-450 PRINT #2, " fonts" + CHR$(34) + "," + CHR$(34) + "100," + RIGHT$(STR$(FS), LEN(STR$(FS)) - 1) + "," + RIGHT$(STR$(FS), LEN(STR$(FS)) - 1) + CHR$(34) + ",2:vgacolor.2gr,2:vgalogo.lgo,V:vddvbe.386,V:vbevmdib.3gr,,2:vgalogo.rle," + K$
+450 PRINT #2, " fonts" + CHR$(34) + "," + CHR$(34) + "100," + RIGHT$(STR$(FS), LEN(STR$(FS)) - 1) + "," + RIGHT$(STR$(FS), LEN(STR$(FS)) - 1) + CHR$(34) + ",W:vgacolor.2gr,W:vgalogo.lgo,V:vddvbe.386,V:vbevmdib.3gr,,W:vgalogo.rle," + K$
 460 NEXT FS, J
 470 REM Settings
 480 FOR J = 0 TO I: REM Cycle AGAIN over all valid modes
