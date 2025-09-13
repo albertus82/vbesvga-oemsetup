@@ -82,7 +82,7 @@ This GW-BASIC/QBasic program, OEMSETUP.BAS, is an automatic generator for an OEM
 650 HE% = ... ' Extract height
 660 IF WI% < 640 OR HE% < 480 THEN RETURN  ' Only keep at least 640x480
 670 DE% = ... ' Extract color depth
-680 IF DE% > 24 THEN DE% = 24   ' Max depth is 24-bit
+680 IF DE% > 24 THEN DE% = 24  ' Max depth is 24-bit
 690 FOR J = 0 TO I
 700 IF MO(J, 0) = WI% AND MO(J, 1) = HE% AND MO(J, 2) = DE% THEN RETURN  ' No duplicates
 710 NEXT J
@@ -97,7 +97,7 @@ This GW-BASIC/QBasic program, OEMSETUP.BAS, is an automatic generator for an OEM
 
 ### 4. **Generate OEMSETUP.INF**
 ```basic
-270 OPEN "O", 2, "oemsetup.inf"   ' Open output file
+270 OPEN "O", 2, "oemsetup.inf"  ' Open output file
 ```
 **Writes setup sections:**
 - `[disks]`  
@@ -108,9 +108,9 @@ This GW-BASIC/QBasic program, OEMSETUP.BAS, is an automatic generator for an OEM
 
 ```basic
 350 FOR J = 0 TO I
-360 FOR FS = 96 TO 120 STEP 24   ' For each font size (96=Small, 120=Large)
-370 K$ = ...                     ' Unique key for mode+font combo
-380 PRINT #2, ...                ' Writes display entry with mode details
+360 FOR FS = 96 TO 120 STEP 24  ' For each font size (96=Small, 120=Large)
+370 K$ = ...                    ' Unique key for mode+font combo
+380 PRINT #2, ...               ' Writes display entry with mode details
 ...
 460 NEXT FS, J
 ```
