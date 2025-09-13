@@ -59,15 +59,15 @@ This GW-BASIC/QBasic program, OEMSETUP.BAS, is an automatic generator for an OEM
 
 ### 2. **Collect valid video modes**
 ```basic
-140 SHELL "vidmodes > vidmodes.out"           ' Runs vidmodes utility, saves output
-150 OPEN "I", 1, "vidmodes.out"               ' Opens output for reading
-160 WHILE A$ <> "Available modes:" ... WEND   ' Skips lines until mode list begins
+140 SHELL "vidmodes > vidmodes.out"                    ' Runs vidmodes utility, saves output
+150 OPEN "I", 1, "vidmodes.out"                        ' Opens output for reading
+160 WHILE A$ <> "Available VBE video modes:" ... WEND  ' Skips lines until mode list begins
 ```
 - **It uses an external utility (vidmodes) to list available video modes and writes them to a file.**
-- **It skips lines until it finds "Available modes:".**
+- **It skips lines until it finds "Available VBE video modes:".**
 
 ```basic
-200 WHILE NOT EOF(1)
+200 WHILE NOT EOF(1) AND A$ <> ""
 210 LINE INPUT #1, A$
 220 GOSUB 620  ' Parse and store valid video mode
 230 WEND
