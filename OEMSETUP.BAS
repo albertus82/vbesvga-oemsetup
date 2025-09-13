@@ -19,7 +19,7 @@
 280 REM Header
 290 PRINT #2, "[disks]"
 300 PRINT #2, "V=. ," + CHR$(34) + "PluMGMK VBE SVGA driver path" + CHR$(34) + ",diskV"
-310 PRINT #2, "W=. ," + CHR$(34) + "Microsoft Windows 3.x setup disks" + CHR$(34) + ",disk2"
+310 PRINT #2, "W=. ," + CHR$(34) + "Microsoft Windows 3.x setup disks" + CHR$(34) + ",diskW"
 320 PRINT #2, ""
 330 PRINT #2, "[display]"
 340 REM Entries
@@ -65,3 +65,4 @@
 740 MO(I, 1) = HE%
 750 MO(I, 2) = DE%
 760 RETURN: REM End of the routine that collects valid video modes
+
