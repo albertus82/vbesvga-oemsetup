@@ -4,11 +4,11 @@
 130 REM Collect valid video modes for Windows
 140 SHELL "vidmodes > vidmodes.out"
 150 OPEN "I", 1, "vidmodes.out"
-160 WHILE A$ <> "Available modes:"
+160 WHILE A$ <> "Available VBE video modes:"
 170 LINE INPUT #1, A$: REM Skip line
 180 WEND
 190 I = -1
-200 WHILE NOT EOF(1)
+200 WHILE NOT EOF(1) AND A$ <> ""
 210 LINE INPUT #1, A$
 220 GOSUB 620
 230 WEND
@@ -19,7 +19,7 @@
 280 REM Header
 290 PRINT #2, "[disks]"
 300 PRINT #2, "V=. ," + CHR$(34) + "PluMGMK VBE SVGA driver path" + CHR$(34) + ",diskV"
-310 PRINT #2, "W=. ," + CHR$(34) + "Microsoft Windows 3.x setup path" + CHR$(34) + ",diskW"
+310 PRINT #2, "W=. ," + CHR$(34) + "Microsoft Windows 3.x setup disks" + CHR$(34) + ",disk2"
 320 PRINT #2, ""
 330 PRINT #2, "[display]"
 340 REM Entries
