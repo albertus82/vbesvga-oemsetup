@@ -6,7 +6,7 @@
 
 * Setup Windows 3.1x with the default VGA driver (640x480x16)
 * Make sure you have a BASIC interpreter like **GW-BASIC** or **QBasic**
-* Have your Windows installation disks handy.
+* Have your Windows installation disks handy (usually disk 2)
 
 ### Usage
 
